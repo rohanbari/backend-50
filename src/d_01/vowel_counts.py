@@ -1,8 +1,15 @@
 def main() -> None:
-    print("Input a sentence and hit enter:")
-    string = input()
+    while True:
+        try:
+            print("Input a sentence and hit enter:")
+            string = input()
 
-    print(f"Total vowel count: {countVowels(string)}")
+            print(f"Total vowel count: {countVowels(string)}")
+        except KeyboardInterrupt as e:
+            print("\nThank you for using this program.")
+            exit(0)
+        except Exception as e:
+            print("This is an ill-formed sentence. Please retry.")
 
 
 def countVowels(string: str) -> int:
