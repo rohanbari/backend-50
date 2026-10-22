@@ -1,4 +1,4 @@
-from typing import Counter
+from collections import Counter
 
 
 def main() -> None:
@@ -11,10 +11,11 @@ def main() -> None:
             continue
 
         words = sentence.split()
-
         counter = Counter(words)
 
+        # Sorting items based on descending value of pairs
         sortedCounts = dict(sorted(counter.items(), key=lambda item: -item[1]))
+
         for key, value in sortedCounts.items():
             print(f"Word: {key} has occurred {value} times.")
 

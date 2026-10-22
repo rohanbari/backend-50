@@ -8,29 +8,40 @@ def main() -> None:
 
         try:
             numbers = list(map(int, numString.split()))
-            largest, second = largestSecond(numbers)
+            result = largestSecond(numbers)
 
-            print(f"Largest: {largest}, second largest: {second}")
+            if result is not None:
+                largest, second = result
+                print(f"Largest: {largest}, second largest: {second}")
         except ValueError as e:
             print("Error: Invalid value type. Retry")
             continue
         except KeyboardInterrupt as e:
             print("Bruh! Chill, I'm going. Bye.")
+            exit(0)
         except Exception as e:
             print("Error:", e)
-            exit(1)
 
 
-def largestSecond(numbers: list[int]) -> tuple[int, int]:
-    largest = numbers[0]
-    secondLargest = numbers[0]
+def largestSecond(numbers: list[int]):
+    """Returns largest and second largest value in the list.
+
+    Args:
+        numbers (list[int]): The list to find values from
+
+    Returns:
+        _type_: Largest and second largest numbers [or] None
+    """
+    largest = secondLargest = None
 
     for num in numbers:
-        if num > largest:
-            secondLargest = largest
-            largest = num
-        elif num > secondLargest and num != largest:
+        if largest is None or num > largest:
+            secondLargest, largest = largest, num
+        elif num != largest and (secondLargest is None or num > secondLargest):
             secondLargest = num
+
+    if secondLargest is None:
+        return None
 
     return largest, secondLargest
 

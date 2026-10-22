@@ -4,6 +4,7 @@ def main() -> None:
             print("Input a string below and hit enter when done:")
             string = input()
 
+            # Reversing the string through iterator and assembling back
             rev = "".join(reversed(string))
             print("Reversed:", rev)
         except KeyboardInterrupt as e:

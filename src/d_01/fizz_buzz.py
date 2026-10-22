@@ -1,3 +1,6 @@
+import sys
+
+
 def main() -> None:
     while True:
         try:
@@ -13,7 +16,7 @@ def main() -> None:
                 print("It's not a FizzBuzz-able number.")
         except KeyboardInterrupt as e:
             print("\nThanks for using this program!")
-            exit(0)
+            sys.exit(0)
         except Exception as e:
             print("Error: It's not a valid number!")
 
